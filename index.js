@@ -8,6 +8,10 @@ titulo.innerText = "Catálogo";
 
 let filteredMovies = data;
 
+
+
+
+
 const createCards = (filteredMovies) =>{
     const card = filteredMovies.map((movie) => {
         return `<div class="tarjetas col-md-3 mb-3">
@@ -28,6 +32,7 @@ const createCards = (filteredMovies) =>{
     container.innerHTML = card.join("");
 };
 
+
 const filterMovies = (event) => {
     const movieName = event.target.value.toLowerCase();
     filteredMovies = data.filter((movie) => 
@@ -36,6 +41,7 @@ const filterMovies = (event) => {
 
     createCards(filteredMovies);
 };
+
 
 const btnLimpiar = document.querySelector(".btn-limpiar");
 btnLimpiar.addEventListener("click", () => {

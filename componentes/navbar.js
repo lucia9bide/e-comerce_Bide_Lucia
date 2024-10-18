@@ -5,12 +5,13 @@ const items = [
 const header = document.querySelector("header");
 
 header.innerHTML = `
-    <nav class="navbar px-5 p-3">
+    <nav class="navbar px-5 p-4" style="height: 80px;">
         <div class="container-fluid">
             <div>
                 <ul class="navbar-nav">
                 </ul>
             </div>
+        </div>
     </nav>`;
  
 const botones = [
