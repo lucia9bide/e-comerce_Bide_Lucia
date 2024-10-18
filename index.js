@@ -13,7 +13,7 @@ const createCards = (filteredMovies) =>{
         return `<div class="tarjetas col-md-3 mb-3">
                     <div class="card">
                         <img src="${movie.image}" class="card-img-top" alt="Imagen de la pelicula ${movie.title}">
-                        <div class="card-body" style="min-height: 300px">
+                        <div class="card-body" style="">
                             <div class="textos justify-content-center pb-4">
                                 <h5 class="">${movie.title}</h5>
                                 <small class="card-genre" style="color: #4481eb;">${movie.genre}</small>
@@ -54,12 +54,12 @@ const genres = [
     "Animación",
     "Acción",
     "Drama",
+    "Ciencia Ficción",
     "Documental",
     "Romance",
     "Comedia",
-    "Crime",
-    "Sci-Fi",
-    "Horror",
+    "Crimen",
+    "Terror",
     "Thriller",
     "Musical",
   ];

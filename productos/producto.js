@@ -15,7 +15,8 @@ if (movieFiltered) {
             <div class="col-md-6">
                 <h1 class="tituloProducto mb-4">${movieFiltered.title}</h1>
                 <p class="descripcion">${movieFiltered.description}</p>
-                <p class="precio" >Precio: $${movieFiltered.price}</p>
+                <p class="precio" >Precio: ${movieFiltered.price}</p>
+                <p class="stock">Stock: ${movieFiltered.stock}</p>
                 <a href="../index.html" class="volver-inicio">Volver al Home</a>
             </div>
         </div>
