@@ -1,5 +1,26 @@
 import { data } from "./utils/data.js";
 
+const header = document.querySelector("header");
+header.innerHTML = `
+<nav class="navbar px-5 p-4">
+        <div class="container-fluid">
+            <div>
+                <ul class="navbar-nav">
+                  <p class="home">Home</p>
+                </ul>
+            </div>
+            <div class="filtrado-main">
+                <div class="filtrado">
+                    <form class="buscador" role="search">
+                        <input class="barra-buscar" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn-limpiar" type="submit">Limpiar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a href="/pages/login.html">log</a>
+    </nav>`;
+
 const container = document.querySelector(".container");
 const categorias = document.querySelector(".categorias")
 
@@ -8,22 +29,18 @@ titulo.innerText = "Catálogo";
 
 let filteredMovies = data;
 
-
-
-
-
-const createCards = (filteredMovies) =>{
+const createCards = (filteredMovies) => {
     const card = filteredMovies.map((movie) => {
         return `<div class="tarjetas col-md-3 mb-3">
                     <div class="card">
                         <img src="${movie.image}" class="card-img-top" alt="Imagen de la pelicula ${movie.title}">
                         <div class="card-body" style="">
-                            <div class="textos justify-content-center pb-4">
-                                <h5 class="">${movie.title}</h5>
+                            <div class="textos pb-4">
+                                <h5 class=" justify-content-center">${movie.title}</h5>
                                 <small class="card-genre" style="color: #4481eb;">${movie.genre}</small>
                             </div>
-                            <p class="card-text">${movie.description.slice(0, 50)}</p>
-                            <a href="/productos/producto.html?prod=${movie.id}" class="boton"> Ver Más </a>
+                            <p class="card-text">${movie.description.slice(0, 70)}...</p>
+                            <a href="/pages/producto.html?prod=${movie.id}" class="boton"> Ver Más </a>
                         </div>
                     </div>
                 </div>`;
@@ -38,9 +55,9 @@ const filterMovies = (event) => {
     filteredMovies = data.filter((movie) => 
         movie.title.toLowerCase().includes(movieName)
     );
-
     createCards(filteredMovies);
 };
+
 
 
 const btnLimpiar = document.querySelector(".btn-limpiar");
