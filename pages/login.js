@@ -1,6 +1,6 @@
 import { user } from "../utils/loginData.js";
 
-const form = document.querySelector("#form");
+/*const form = document.querySelector("#form");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -12,7 +12,7 @@ form.addEventListener("submit", (event) => {
         console.log("Contraseña: ", password);
 
         if(userData.email === email && userData.password === password){
-            localStorage.setItem("userEmail", user);
+            localStorage.setItem("email", user);
             window.location.href = "./index.html";
         }else{
             alert("Email o contraseña incorrectos");
@@ -25,4 +25,4 @@ if (userEmail) {
   window.location.href = "./index.html";
 }
 
-console.log(user);
+console.log(user);*/

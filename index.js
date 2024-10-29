@@ -2,11 +2,11 @@ import { data } from "./utils/data.js";
 
 const header = document.querySelector("header");
 header.innerHTML = `
-<nav class="navbar px-5 p-4">
+<nav class="navbar">
         <div class="container-fluid">
-            <div>
+            <div class="navbar-nav-mayor">
                 <ul class="navbar-nav">
-                  <p class="home">Home</p>
+                  <a href="/pages/login.html">log</a>
                 </ul>
             </div>
             <div class="filtrado-main">
@@ -18,7 +18,6 @@ header.innerHTML = `
                 </div>
             </div>
         </div>
-        <a href="/pages/login.html">log</a>
     </nav>`;
 
 const container = document.querySelector(".container");
