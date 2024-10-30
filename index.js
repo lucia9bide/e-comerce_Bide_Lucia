@@ -6,7 +6,7 @@ header.innerHTML = `
         <div class="container-fluid">
             <div class="navbar-nav-mayor">
                 <ul class="navbar-nav">
-                  <a href="/pages/login.html">log</a>
+                  <a class="text-decoration-none" href="/pages/login.html">log</a>
                 </ul>
             </div>
             <div class="filtrado-main">
@@ -33,6 +33,12 @@ const createCards = (filteredMovies) => {
         return `<div class="tarjetas col-md-3 mb-3">
                     <div class="card">
                         <img src="${movie.image}" class="card-img-top" alt="Imagen de la pelicula ${movie.title}">
+                         ${movie.stock === 0
+                              ? `<div class="position-absolute top-0 end-0 m-1 p-1 bg-danger text-white fw-bold rounded">
+                                  Sin stock
+                                </div>`
+                              : ""
+                          }
                         <div class="card-body" style="">
                             <div class="textos pb-4">
                                 <h5 class=" justify-content-center">${movie.title}</h5>
