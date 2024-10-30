@@ -6,7 +6,7 @@ export const data = [
     image: "https://img.yts.mx/assets/images/movies/the_wild_robot_2024/large-screenshot2.jpg",
     genre: "Animación | Ciencia Ficción",
     price: "$16",
-    stock: "si hay",
+    stock: 12,
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const data = [
     image: "https://e.rpp-noticias.io/xlarge/2022/03/02/203820_1225497.jpg",
     genre: "Drama | Acción",
     price: "$56",
-    stock: "si hay",
+    stock: 6,
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const data = [
     image: "https://image.tmdb.org/t/p/w1280/dsSodbJrJoafzMz4zheuKZ4PeUw.jpg",
     genre: "Acción | Comedia | Musical | Romance",
     price: "$22",
-    stock: "si hay",
+    stock: 93,
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ export const data = [
     image: "https://img.yts.mx/assets/images/movies/mike_mignola_drawing_monsters_2022/large-screenshot3.jpg",
     genre: "Documental",
     price: "$79",
-    stock: "si hay",
+    stock: 0,
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ export const data = [
     image: "https://m.media-amazon.com/images/S/pv-target-images/8e8b0e10a80881356f26ee51565d95ad3ba1cb531fedd37661ccfec8a653b902.jpg",
     genre: "Comedia",
     price: "$19",
-    stock: "si hay",
+    stock: 86,
   },
   {
     id: 6,
@@ -56,7 +56,7 @@ export const data = [
     image: "https://i0.wp.com/scifi.radio/wp-content/uploads/2024/06/alien-romulus-gets-new-posters-with-and-without-the-alien-v0-sjyhy5l8ak4d1.webp?resize=1280%2C640&ssl=1",
     genre: "Ciencia Ficción | Thriller",
     price: "$5",
-    stock: "si hay",
+    stock: 35,
   },
   {
     id: 7,
@@ -66,7 +66,7 @@ export const data = [
     image: "https://www.elimparcial.com/resizer/v2/JOTV44KNGRA6BKLAARVQWAZPIU.jpg?auth=6fdd433cf030f5120787554f5eb41cb0e9ee3bfb0dc26caf55b52e9865c90bac&smart=true&width=1200&height=800&quality=70",
     genre: "Drama | Terror",
     price: "$99",
-    stock: "si hay",
+    stock: 65,
   },
   {
     id: 8,
@@ -76,7 +76,7 @@ export const data = [
     image: "https://thediplomatinspain.com/wp-content/uploads/2024/07/Gru-ok-750x375.jpg",
     genre: "Acción | Comedia | Crimen | Animación",
     price: "$39",
-    stock: "si hay",
+    stock: 10,
   },
   {
     id: 9,
@@ -86,7 +86,7 @@ export const data = [
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEHCKuu3YEqQJc6gLPt_avaac1vAaNoHzQQ&s",
     genre: "Drama | Romance | Musical | Thriller | Acción",
     price: "$54",
-    stock: "si hay",
+    stock: 0,
   },
   {
     id: 10,
@@ -96,7 +96,7 @@ export const data = [
     image: "https://lascronicasdedeckard.com/wp-content/uploads/2019/02/Suspiria-2018-Movie-Poster.jpg",
     genre: "Drama | Acción | Terror",
     price: "$48",
-    stock: "si hay",
+    stock: 23,
   },
   {
     id: 11,
@@ -106,7 +106,7 @@ export const data = [
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7jfLzCpjRsyuLuaL9Am5ilWl2V9KIKREHhQ&s",
     genre: "Documental",
     price: "$39",
-    stock: "si hay",
+    stock: 75,
   },
   {
     id: 12,
@@ -116,6 +116,6 @@ export const data = [
     image: "https://isopixel.net/wp-content/uploads/2017/03/wonder-woman-peli-feature.jpg",
     genre: "Acción | Ciencia Ficción",
     price: "$2",
-    stock: "si hay",
+    stock: 45,
   },
 ];
