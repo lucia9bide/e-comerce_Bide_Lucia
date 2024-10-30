@@ -163,6 +163,7 @@ header{
 
 .card{
     min-height: 430px;
+    max-height: 430px;
     height: 100%;
     margin: 1rem;
     box-shadow: #0A3871;
@@ -178,6 +179,8 @@ header{
 }
 
 .card-body{
+    max-height: 350px;
+    height: 100%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -198,7 +201,7 @@ header{
     align-content: center;
     color: var(--color-text);
     cursor: pointer;
-    margin: 15px;
+    margin: 10px;
     border-radius: 50px;
     height: 50px;
     text-align:center;
