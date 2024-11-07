@@ -24,14 +24,26 @@ body{
 
 header{
     height: 100%;
-    padding: 10px;
+    background-color: var(--color-principal);
 }
-
 .container_header{
     display: flex;
 	flex-wrap: wrap;
-	align-content: flex-start;
+	align-content: center;
 	height: 80px;
+}
+
+.navbar{
+    width: 100%;
+    display: flex;
+}
+
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    color:#f5f5f5;
+    font-family: var(--fuente-ubuntu);
 }
 
 .volver-inicio{

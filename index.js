@@ -1,30 +1,20 @@
 import { data } from "./utils/data.js";
 
-const header = document.querySelector("header");
-header.innerHTML = `
-<nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-nav-mayor">
-                <ul class="navbar-nav">
-                  <a class="text-decoration-none" href="/pages/login.html">log</a>
-                </ul>
-            </div>
-            <div class="filtrado-main">
+const container = document.querySelector(".container");
+const categorias = document.querySelector(".categorias")
+
+const titulo = document.querySelector("h1");
+titulo.innerText = "Catálogo";
+
+const buscador = document.querySelector(".buscador");
+buscador.innerHTML = `<div class="filtrado-main">
                 <div class="filtrado">
                     <form class="buscador" role="search">
                         <input class="barra-buscar" type="search" placeholder="Buscar" aria-label="Search">
                         <button class="btn-limpiar" type="submit">Limpiar</button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </nav>`;
-
-const container = document.querySelector(".container");
-const categorias = document.querySelector(".categorias")
-
-const titulo = document.querySelector("h1");
-titulo.innerText = "Catálogo";
+            </div>`
 
 let filteredMovies = data;
 
