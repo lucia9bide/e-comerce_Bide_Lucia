@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root{
-    --color-principal: #0A3871;
+    --color-principal: #1152a1;
     --color-principal-2:#124b90;
-    --color-sombra-principal: #041f40;
+    --color-sombra-principal: #062f62;
     --color-fondo: #1e90ff;
     --color-cyan: #3f86ed;
     --color-verdeCeleste:#04befe;
@@ -43,6 +43,7 @@ header{
 	flex-wrap: wrap;
 	align-content: center;
 	height: 80px;
+    margin-bottom: 30px;
 }
 
 .navbar{

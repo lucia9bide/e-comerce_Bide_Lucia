@@ -17,8 +17,8 @@ if (movieFiltered) {
                 <p class="descripcion">${movieFiltered.description}</p>
                 <p class="precio" >Precio: ${movieFiltered.price}</p>
                 <p class="stock">Stock: ${movieFiltered.stock}</p>
-                
             </div>
+            
         </div>
     </div>
     `;
