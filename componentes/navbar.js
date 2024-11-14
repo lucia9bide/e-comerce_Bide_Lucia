@@ -2,7 +2,7 @@ const items = [
     { titulo: "Home", href: "../index.html" },
   ];
 
-const email = localStorage.getItem("emailUser");
+const email = localStorage.getItem("userMail");
 const quantity = localStorage.getItem("quantity");
 
 const header = document.querySelector(".container_header");
@@ -12,10 +12,12 @@ header.innerHTML = `
     <ul class="navbar-nav">
     </ul>
     <div class="d-flex flex-row align-items-center gap-4 d-none d-lg-flex">
+           <div class="d-flex flex-row align-items-center gap-4 d-none d-lg-flex">
             ${email? `<div>
                     <span class="text-white">Hola, ${email}</span>
+                    <img height="50" style="cursor: pointer; padding-left: 20px" id="avatar" src="https://www.pngarts.com/files/11/Avatar-PNG-Free-Download.png" alt="Batman icon" />
                   </div>`
-                : `<button onclick='window.location.href = "./login.html"' class="btn btn-primary">Iniciar sesión</button>`
+                : `<button onclick='window.location.href = "./pages/login.html"' class="btn btn-primary">Iniciar sesión</button>`
             }
             <a href="./pages/cart.html" style="color: #e0e0e0; text-decoration: none;">
               <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,15 +26,36 @@ header.innerHTML = `
               <b>${quantity}</b>
             </a>
           </div>
+
+          <div id="logout-menu" style="display: none; position: absolute; top: 70px; right: 50px;">
+            <button id="logout-button" class="btn btn-danger">Cerrar sesión</button>
+          </div>        
   </div>
 </nav>`;
 
 const menu = document.querySelector(".navbar-nav");
 
 for (let item of items) {
-    menu.innerHTML += `
-        <li class="nav-item">
-            <a class="nav-link active fs-5 text-white" href="${item.href}">${item.titulo}</a>
-        </li>
-    `;
+  menu.innerHTML += `
+      <li class="nav-item">
+          <a class="nav-link active fs-5 text-white" href="${item.href}">${item.titulo}</a>
+      </li>
+  `;
 };
+
+const avatar = document.querySelector("#avatar");
+const logoutMenu = document.querySelector("#logout-menu");
+const logoutButton = document.querySelector("#logout-button");
+
+avatar.addEventListener("click", () => {
+  if (logoutMenu.style.display === "none" || logoutMenu.style.display === "") {
+    logoutMenu.style.display = "block";
+  } else {
+    logoutMenu.style.display = "none";
+  }
+});
+
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("userMail");
+  window.location.href = "../index.html";
+});
