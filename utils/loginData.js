@@ -1,3 +1,3 @@
 export const user = 
-    {email: "hola@gmail.com", 
-    password: "chau123"};
+    {email: "batman@gmail.com", 
+    password: "ironmanapesta"};
