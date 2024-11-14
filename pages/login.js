@@ -12,7 +12,7 @@ form.addEventListener("submit", (event) =>{
     if (user.email === email && user.password === password){
         let quantity = 0;
 
-        localStorage.setItem("emailUser", email);
+        localStorage.setItem("userMail", email);
 
         localStorage.setItem("cart", JSON.stringify([]));
         localStorage.setItem("quantity", quantity);
