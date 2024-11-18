@@ -299,6 +299,9 @@ header{
 
 .img-fluid{
     border-radius: 20px;
+    min-width: 600px;
+    max-width: 600px;
+    width: 100%;
 }
 
 .tituloProducto{
