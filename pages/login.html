@@ -20,24 +20,21 @@
     </style>
     <title>Document</title>
   </head>
-  <body>
-    <form id="form">
-      <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input type="email" class="form-control" name="email" required />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input name="password" type="password" class="form-control" required />
-      </div>
-      <span id="error" style="display: none; color: red; padding-bottom: 20px"
-        >Contraseña o usuario incorrecto</span
-      >
-      <button type="submit" class="btn btn-primary" id="submit-button">
-        Submit
-      </button>
-    </form>
-
+  <body class="bodyLogin">
+      <form id="form">
+        <div class="mb-3">
+          <label class="form-label text-white">Email address</label>
+          <input type="email" class="form-control" name="email" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label text-white">Password</label>
+          <input name="password" type="password" class="form-control" required />
+        </div>
+        <span id="error" style="display: none; color: red; padding-bottom: 20px">Contraseña o usuario incorrecto</span>
+        <button type="submit" class="btn btn-primary" id="submit-button">
+          Submit
+        </button>
+      </form>
     <script type="module" src="./login.js"></script>
   </body>
 </html>

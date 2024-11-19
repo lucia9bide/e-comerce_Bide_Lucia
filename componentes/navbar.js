@@ -1,5 +1,6 @@
 const items = [
     { titulo: "Home", href: "../index.html" },
+
   ];
 
 const email = localStorage.getItem("userMail");
@@ -11,7 +12,7 @@ header.innerHTML = `
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
     </ul>
-    <div class="d-flex flex-row align-items-center gap-4 d-none d-lg-flex">
+    <div class="d-flex flex-row align-items-center gap-4 d-none d-lg-flex ">
            <div class="d-flex flex-row align-items-center gap-4 d-none d-lg-flex">
             ${email? `<div>
                     <span class="text-white">Hola, ${email}</span>
@@ -27,7 +28,6 @@ header.innerHTML = `
             }
             
           </div>
-
           <div id="logout-menu" style="display: none; position: absolute; top: 70px; right: 50px;">
             <button id="logout-button" class="btn btn-danger">Cerrar sesión</button>
           </div>        
@@ -40,6 +40,7 @@ for (let item of items) {
   menu.innerHTML += `
       <li class="nav-item">
           <a class="nav-link active fs-5 text-white" href="${item.href}">${item.titulo}</a>
+          
       </li>
   `;
 };
