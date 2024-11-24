@@ -1,5 +1,7 @@
 import { user } from "../utils/loginData.js";
 
+const errorText = document.querySelector("#error");
+
 form.addEventListener("submit", (event) =>{
     event.preventDefault();
 
@@ -19,8 +21,18 @@ form.addEventListener("submit", (event) =>{
 
         window.location.href = "../index.html";
     }else{
+        errorText.style.display = "flex";
         form.elements.email.value = "";
         form.elements.password.value = "";
+        Toastify({
+            text: "En algo te equivocaste flac@.",
+            className: "error",
+            style: {
+              background: "#dc3545",
+              color: "#fff",
+            },
+            duration: 4000,
+          }).showToast();
     }
 });
 

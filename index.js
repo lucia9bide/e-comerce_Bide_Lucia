@@ -57,8 +57,6 @@ btnLimpiar.addEventListener("click", () => {
 const input = document.querySelector(".barra-buscar");
 input.addEventListener("input", filterMovies);
 
-createCards(filteredMovies);
-
 const genres = [
     "Todo",
     "Animación",
@@ -102,6 +100,18 @@ const filterMoviesByGenre = (genre) => {
     });
   });
   
-  // Mostrando todas las películas al inicio
-  createCards(data);
 
+const loader = document.querySelector(".loader");
+
+const myPromise = (movies) => {
+  loader.style.display = "block";
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(createCards(movies));
+      loader.style.display = "none";
+    }, 3000);
+  });
+};
+
+myPromise(data);
