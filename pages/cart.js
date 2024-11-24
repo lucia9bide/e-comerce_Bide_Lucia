@@ -14,7 +14,7 @@ function getCards (cards){
             <p class="cart-item-price fs-6 mb-0">Precio: ${card.product.price}</p>
             <p class="cart-item-quantity mb-0">Cantidad: ${card.quantity}</p>
             <p class="cart-item-total-pric mb-3">Precio Total: $${card.product.price * card.quantity} </p>
-            <button class="btn btn-danger btn-sm" onclick="removeItem()">Eliminar</button>
+            <button class="btn btn-danger btn-sm" onclick="removeItem(id)">Eliminar</button>
           </div>
         </div>
       </div>
@@ -43,16 +43,16 @@ function removeItem(id) {
   const cards = JSON.parse(localStorage.getItem("cart"));
   const newCards = cards.filter(card => card.id != id);
   localStorage.setItem("cart", JSON.stringify(newCards));
-  getCart(newCards);
+  getCards(newCards);
   total(newCards);
   let quantity = newCards.reduce((acumulado, actual) => acumulado + actual.quantity, 0);
   localStorage.setItem("quantity", quantity);
 
-  const quantityTag = document.querySelector(".quantity");
-  quantityTag.innerText = quantity;
+  const quantityTag = document.querySelector("#quantity");
+  quantityTag.innerText = quantity
 
   Toastify({
-      text: "Eliminaste producto/s del carrito de compras",
+      text: "Eliminado correctamente",
       duration: 3000,
       style: {
         background: "#DB5079",
@@ -61,7 +61,7 @@ function removeItem(id) {
 
 }
 Swal.fire({
-  text: "¿Estás seguro/a de que querés eliminar este producto de tu carrito?",
+  text: "¿Estás seguro?",
   confirmButtonText: "Si",
   cancelButtonText: "No",
   showCancelButton: true,
@@ -71,5 +71,68 @@ Swal.fire({
 }).then(result => {
   if (result.isConfirmed)
     remove();
-})
+});
+};
+
+function clear(){
+  let quantityTag = document.querySelector("#quantity");
+  quantityTag.innerHTML = "0";
+  localStorage.setItem("cart", JSON.stringify([]));
+  localStorage.setItem("quantity", "0");
+  getCart([]);
+  total([]);
+
+  Toastify({
+      text: "Eliminaste todos los productos del carrito de compras",
+      duration: 3000,
+      style: {
+        background: "#DB5079",
+      },
+    }).showToast();
+}
+
+function clearCart() {
+    clear()
+Swal.fire({
+    text: "¿Estás seguro/a de que querés eliminar todos los productos de tu carrito?",
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+    showCancelButton: true,
+    ahowCloseButton: true,
+    confirmButtonColor: "#06f",
+    cancelButtonColor: "#DB5079",
+  }).then(result => {
+    if (result.isConfirmed)
+      clear()
+  })
+}
+
+
+
+function checkout(){
+
+  const recurso ={
+    user: localStorage.getItem("userEmail"),
+    items: JSON.parse(localStorage.getItem("cart")),
+  }
+
+  fetch("https://67367b0baafa2ef222309f81.mockapi.io/cart/orders",{
+    method: "POST",
+    body: JSON.stringify(recurso),
+  })
+  .then(response => response.json())
+  .then(data => {
+    Swal.fire({
+      text: `Gracias ${data.user}. Hemos registrado tu orden número #${data.id}.`,
+      confirmButtonText: "Si",
+      confirmButtonColor:"#06f",
+    })
+    clear()
+  })
+  .catch(() =>
+  Swal.fire({
+    text:"Ocurrió un error, vuelva a intentarlo.",
+    confirmButtonText: "Si",
+    confirmButtonColor: "#06f"
+  }))
 }
