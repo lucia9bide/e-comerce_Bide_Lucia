@@ -12,13 +12,13 @@ if (movieFiltered) {
     peliculaSola.innerHTML = `
       <div class="contenedor-peli class="row text-white p-4 rounded-5 shadow-sm">
         <div class="row">
-            <div class="col-md-5">
-                <img src="${movieFiltered.image}" class="img-fluid" alt="${movieFiltered.title}" style="max-width: 100%; height: 100%; object-fit: cover;">
+            <div class="col-md-6">
+                <img src="${movieFiltered.image}" class="img-fluid" alt="${movieFiltered.title}" style="height: 100%; object-fit: cover;">
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h1 class="tituloProducto mb-4">${movieFiltered.title}</h1>
                 <p class="descripcion">${movieFiltered.description}</p>
-                <p class="precio" >Precio: ${movieFiltered.price}</p>
+                <p class="precio" >Precio: $${movieFiltered.price}</p>
                 <div>
                 <p class="stock">Stock: ${movieFiltered.stock}</p>
 
@@ -99,6 +99,7 @@ if (movieFiltered) {
         className: "info",
         style: {
           background: "#218838",
+          color: "#f5f5f5",
         },
       }).showToast();
     });
