@@ -1,6 +1,11 @@
 const cardSection = document.querySelector(".cart-cards");
 
 function getCards (cards){
+  if (!cards || cards.length === 0) {
+    cardSection.innerHTML = `<p>El carrito está vacío</p>`;
+    totalElement.textContent = "$0"; 
+    return;
+}  
   const list = cards.map(
     card => `
     <div class="container">
@@ -14,7 +19,7 @@ function getCards (cards){
             <p class="cart-item-price fs-6 mb-0">Precio: ${card.product.price}</p>
             <p class="cart-item-quantity mb-0">Cantidad: ${card.quantity}</p>
             <p class="cart-item-total-pric mb-3">Precio Total: $${card.product.price * card.quantity} </p>
-            <button class="btn btn-danger btn-sm" onclick="removeItem(id)">Eliminar</button>
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${card.id})">Eliminar</button>
           </div>
         </div>
       </div>
@@ -38,17 +43,19 @@ function total(cards){
 
 total(JSON.parse(localStorage.getItem("cart")));
 
-function removeItem(id) {
+function removeFromCart(id) {
   function remove(){
   const cards = JSON.parse(localStorage.getItem("cart"));
-  const newCards = cards.filter(card => card.id != id);
+  const newCards = cards.filter(card => card.id !== id);
   localStorage.setItem("cart", JSON.stringify(newCards));
+
   getCards(newCards);
   total(newCards);
+
   let quantity = newCards.reduce((acumulado, actual) => acumulado + actual.quantity, 0);
   localStorage.setItem("quantity", quantity);
 
-  const quantityTag = document.querySelector("#quantity");
+  const quantityTag = document.querySelector(".quantity");
   quantityTag.innerText = quantity
 
   Toastify({
@@ -65,7 +72,7 @@ Swal.fire({
   confirmButtonText: "Si",
   cancelButtonText: "No",
   showCancelButton: true,
-  ahowCloseButton: true,
+  showCloseButton: true,
   confirmButtonColor: "#06f",
   cancelButtonColor: "#DB5079",
 }).then(result => {
@@ -74,65 +81,56 @@ Swal.fire({
 });
 };
 
-function clear(){
-  let quantityTag = document.querySelector("#quantity");
-  quantityTag.innerHTML = "0";
-  localStorage.setItem("cart", JSON.stringify([]));
+function clearCart(){
+  localStorage.setItem("cart", "[]");
   localStorage.setItem("quantity", "0");
-  getCart([]);
-  total([]);
 
   Toastify({
-      text: "Eliminaste todos los productos del carrito de compras",
-      duration: 3000,
-      style: {
-        background: "#DB5079",
-      },
-    }).showToast();
-}
-
-function clearCart() {
-    clear()
-Swal.fire({
-    text: "¿Estás seguro/a de que querés eliminar todos los productos de tu carrito?",
-    confirmButtonText: "Si",
-    cancelButtonText: "No",
-    showCancelButton: true,
-    ahowCloseButton: true,
-    confirmButtonColor: "#06f",
-    cancelButtonColor: "#DB5079",
-  }).then(result => {
-    if (result.isConfirmed)
-      clear()
-  })
+    text: "Carrito vaciado correctamente",
+    duration: 3000,
+    style: {
+      background: "#DB5079",
+    },
+  }).showToast();  
 }
 
 
+const btnCheckout = document.querySelector("#btn-checkout");
+btnCheckout.addEventListener("click", (event) => {
+    event.preventDefault(); // hay wque evitar la recarga, porque está envuelto en un href
+    checkout(); 
+});
 
-function checkout(){
+function checkout() {    
 
-  const recurso ={
-    user: localStorage.getItem("userEmail"),
-    items: JSON.parse(localStorage.getItem("cart")),
-  }
+    const recurso = {
+        user: localStorage.getItem("email"),
+        items: JSON.parse(localStorage.getItem("cart")),
+    }
+    console.log("RECURSO : " + recurso);
 
-  fetch("https://67367b0baafa2ef222309f81.mockapi.io/cart/orders",{
-    method: "POST",
-    body: JSON.stringify(recurso),
-  })
-  .then(response => response.json())
-  .then(data => {
-    Swal.fire({
-      text: `Gracias ${data.user}. Hemos registrado tu orden número #${data.id}.`,
-      confirmButtonText: "Si",
-      confirmButtonColor:"#06f",
+    fetch("https://67367b0baafa2ef222309f81.mockapi.io/cart/orders", 
+        {
+            method: "POST",
+            body: JSON.stringify(recurso),
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+         console.log(data);
+        Swal.fire({
+            text: `Gracias ${data.user} por tu compra. Hemos registrado su orden número #${data.id}`,
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#06f",
+        });
+        clearCart();
     })
-    clear()
-  })
-  .catch(() =>
-  Swal.fire({
-    text:"Ocurrió un error, vuelva a intentarlo.",
-    confirmButtonText: "Si",
-    confirmButtonColor: "#06f"
-  }))
+
+    .catch(() => 
+      Swal.fire({ 
+            text: "Hubo un error al realizar la compra",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#06f",
+        })
+    ) 
 }
